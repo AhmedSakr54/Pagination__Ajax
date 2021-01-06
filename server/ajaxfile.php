@@ -2,8 +2,8 @@
 include_once "dbh.php";
 
 $pageNumber = $_POST['pageNumber'];
-$numOfRows = $_POST['numRows'];
-$rowsPerPage = 2;
+$rowsPerPage = $_POST['coursesPerPage'];
+
 $pageLimit = $pageNumber*$rowsPerPage;
 $return_arr = array();
 
@@ -14,7 +14,7 @@ $query =    "SELECT C.course_name, C.course_description, D.department_name, P.pr
             LIMIT $pageLimit,$rowsPerPage";
 
 $result = mysqli_query($conn, $query);
-$i = 0;
+
 while ($row = mysqli_fetch_array($result)) {
     $Cname = $row['course_name'];
     $Cdesc = $row['course_description'];
@@ -28,6 +28,7 @@ while ($row = mysqli_fetch_array($result)) {
         "professor_name" => $ProfName
     );
 }
+
 echo json_encode($return_arr);
 mysqli_close($conn);
 ?>
