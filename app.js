@@ -3,9 +3,9 @@ $(document).ready(function () {
     let numberOfRows;
     let pageNumber;
     let coursesPerPage;
-    liveSearch();
-    function liveSearch() {
-        const searchFor = $("#search").val();
+    liveSearch("");
+    function liveSearch(whatTosearch) {
+        const searchFor = whatTosearch;
         $.ajax({
             url: 'server/getRowNum.php',
             type: 'post',
@@ -16,20 +16,38 @@ $(document).ready(function () {
                 numberOfRows = courseInfo.num_courses;
                 pageNumber = 0;
                 coursesPerPage = courseInfo.courses_per_page;
-                getCourses();
+                getCourses(whatTosearch);
                 disableEnableButtons();
             }
         });
     }
+    let wrote3Letters = false;
 
-    $("#search").keyup(function() {
+    $("#search-btn").click(function() {
+        const searchFor = $("#search").val();
         $courseTable.empty();
-        liveSearch();
+        liveSearch(searchFor);
     });
 
-    function getCourses() {
+    $("#search").keyup(function() {
         const searchFor = $("#search").val();
-        console.log(searchFor);
+        if (searchFor.length >= 3) {
+            $courseTable.empty();
+            liveSearch(searchFor);
+            wrote3Letters = true;
+        }
+        else {
+            if (wrote3Letters) {
+                $courseTable.empty();
+                liveSearch("");
+                wrote3Letters = false;
+            }
+        }
+
+    });
+
+    function getCourses(whatTosearch) {
+        const searchFor = whatTosearch;
         $.ajax({
             url: 'server/ajaxfile.php',
             type: 'post',
@@ -75,6 +93,7 @@ $(document).ready(function () {
         }
         disableEnableButtons();
         $courseTable.empty();
-        getCourses();
+        const searchFor = $("#search").val();
+        getCourses(searchFor);
     });
 });

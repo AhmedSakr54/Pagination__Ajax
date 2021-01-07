@@ -15,7 +15,7 @@
 
 <body>
     <div class="input-group flex-nowrap centered col-lg-4 offset-lg-4 p-3">
-        <span class="input-group-text" id="">Live Search</span>
+        <button class="btn btn-secondary" id="search-btn">Search</button>
         <input id="search" type="text" class="form-control" placeholder="Search...">
     </div>
 
@@ -42,7 +42,7 @@
         <button class="btn btn-secondary next navigation">Next</button>
 
     </div>
-    <script src="app.js"></script>
+    <script src="app1.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">

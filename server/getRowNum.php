@@ -1,7 +1,9 @@
 <?php
 include_once "dbh.php";
 
-$searchedFor = $_POST['searchedFor'];
+$requetsPayLoad = file_get_contents("php://input");
+$object = json_decode($requetsPayLoad);
+$searchedFor = $object->{'searchedFor'};
 
 $query =    "SELECT COUNT(*)
             FROM course C, department D, professor P
