@@ -12,6 +12,7 @@ if(isset($_POST)) {
     $searchedFor = $object->{'searchedFor'};
 
     $pageLimit = $pageNumber*$coursesPerPage;
+    
     $return_arr = array();
 
     $query =   "SELECT C.course_name, C.course_description, D.department_name, P.professor_name

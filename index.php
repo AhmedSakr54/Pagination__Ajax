@@ -34,12 +34,12 @@
             </tbody>
         </table>
     </div>
-    <div class="btn-group center-btns p-3">
-
+    <div class="btn-group center-btns p-3 my-wrapper">
+<!-- 
         <button class="btn btn-secondary previous navigation">Prev</button>
 
 
-        <button class="btn btn-secondary next navigation">Next</button>
+        <button class="btn btn-secondary next navigation">Next</button> -->
 
     </div>
     <script src="app1.js"></script>
