@@ -2,8 +2,8 @@
 include_once "dbh.php";
 
 if(isset($_POST)) {
-    $requetsPayLoad = file_get_contents("php://input");
-    $object = json_decode($requetsPayLoad);
+    $requestPayLoad = file_get_contents("php://input");
+    $object = json_decode($requestPayLoad);
 
     $pageNumber = $object->{'pageNumber'};
     

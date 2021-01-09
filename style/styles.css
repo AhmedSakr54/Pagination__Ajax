@@ -36,3 +36,9 @@ button:hover {
     display: flex;
     justify-content: center;
 }
+
+.page:disabled {
+    color: #646464;
+    font-weight: bolder;
+    background-color: #fff8cd;
+}

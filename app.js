@@ -124,9 +124,9 @@ const doEveryThing = () => {
         const wrapper = document.querySelector(".my-wrapper");
         wrapper.innerHTML = "";
         wrapper.innerHTML += "<button class='btn btn-secondary previous navigation'>Prev</button>";
-            for (let i = 0; i < pages; i++) {
-                wrapper.innerHTML += `<button class='btn btn-secondary page' value='${i+1}'>${i+1}</button>`;
-            }
+        for (let i = 0; i < pages; i++) {
+            wrapper.innerHTML += `<button class='btn btn-secondary page' value='${i+1}'>${i+1}</button>`;
+        }
         wrapper.innerHTML += "<button class='btn btn-secondary next navigation'>Next</button>";
     }
 
