@@ -6,44 +6,7 @@ const doEveryThing = () => {
     let coursesPerPage;
     let allPagesBtns = [];
     let prevPushedBtn;
-
-
-    const showCourses = (allCourses) => {
-        courseTable.innerHTML = "";
-        for (const course of allCourses) {
-            const tr_str = "<tr>" +
-                "<td align='center'>" + course.course_name + "</td>" +
-                "<td align='center'>" + course.course_description + "</td>" +
-                "<td align='center'>" + course.department_name + "</td>" +
-                "<td align='center'>" + course.professor_name + "</td>" +
-                "</tr>";
-            courseTable.innerHTML += tr_str;
-        }
-        if (allCourses.length == 0) {
-            courseTable.innerHTML += "<tr><td colspan='4' align='center' class='no-records'>No Courses Found</td></tr>";
-        }
-
-    };
-
-    const showCoursesSmooth = (allCourses) => {
-        const tdElements = document.querySelectorAll("#course-table tbody tr");
-        const numCourses = allCourses.length;
-        if (tdElements.length == numCourses) {
-            for (let i = 0; i < numCourses; i++) {
-                tdElements[i].cells[0].innerHTML = allCourses[i].course_name;
-                tdElements[i].cells[1].innerHTML = allCourses[i].course_description;
-                tdElements[i].cells[2].innerHTML = allCourses[i].department_name;
-                tdElements[i].cells[3].innerHTML = allCourses[i].professor_name;
-            }
-            for (let i = numCourses; i < coursesPerPage; i++) {
-                courseTable.deleteRow(numCourses);
-            }
-        }
-        else {
-            showCourses(allCourses);
-        }
-    };
-
+    
     const disableEnableButtons = () => {
         if (pageNumber <= 0) {
             document.querySelector(".previous").disabled = true;
@@ -104,13 +67,7 @@ const doEveryThing = () => {
         const whatIsSentJSON = JSON.stringify(whatIsSent);
         request.onreadystatechange = function () {
             if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-                const allCourses = JSON.parse(request.responseText);
-                // courseTable.innerHTML = request.responseText;
-                if (pageNumber == 0) {
-                    showCourses(allCourses);
-                } else {
-                    showCoursesSmooth(allCourses);
-                }
+                courseTable.innerHTML = request.responseText;
             }
         };
         request.send(whatIsSentJSON);
@@ -132,12 +89,8 @@ const doEveryThing = () => {
                     prevPushedBtn = allPagesBtns[pageNumber];
                 }
                 disableEnableButtons();
-                // courseTable.innerHTML = "";
                 const searchFor = document.querySelector("#search").value;
                 getCourses(searchFor);
-                // const trimStart = (pageNumber) * coursesPerPage;
-                // const trimEnd = trimStart + coursesPerPage;
-                // showCourses(coursesSearchedFor.slice(trimStart, trimEnd));
             });
         });
         document.querySelectorAll(".page").forEach((page) => {
@@ -146,12 +99,8 @@ const doEveryThing = () => {
                 const btnValue = this.value;
                 pageNumber = btnValue - 1;
                 disableEnableButtons();
-                // courseTable.innerHTML = "";
                 const searchFor = document.querySelector("#search").value;
                 getCourses(searchFor);
-                // const trimStart = (pageNumber) * coursesPerPage;
-                // const trimEnd = trimStart + coursesPerPage;
-                // showCourses(coursesSearchedFor.slice(trimStart, trimEnd));
                 this.disabled = true;
                 prevPushedBtn.disabled = false;
                 prevPushedBtn = this;
@@ -175,12 +124,10 @@ const doEveryThing = () => {
     document.querySelector("#search").addEventListener('keyup', function () {
         const searchFor = document.querySelector("#search").value;
         if (searchFor.length >= 3) {
-            // courseTable.innerHTML = "";
             allPagesBtns = [];
             liveSearch(searchFor);
         } else if (searchFor.length == 0) {
             allPagesBtns = [];
-            // courseTable.innerHTML = "";
             liveSearch();
         }
     });
@@ -188,7 +135,6 @@ const doEveryThing = () => {
     document.querySelector("#search-btn").addEventListener('click', function () {
         const searchFor = document.querySelector("#search").value;
         allPagesBtns = [];
-        // courseTable.innerHTML = "";
         liveSearch(searchFor);
     });
 
