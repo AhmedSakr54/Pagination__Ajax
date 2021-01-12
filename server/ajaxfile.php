@@ -22,6 +22,8 @@ if(isset($_POST)) {
 
     $result = mysqli_query($conn, $query);
 
+    $output = '';
+    $count = 0;
     while ($row = mysqli_fetch_array($result)) {
         $Cname = $row['course_name'];
         $Cdesc = $row['course_description'];
@@ -34,9 +36,21 @@ if(isset($_POST)) {
             "department_name" => $DepName,
             "professor_name" => $ProfName
         );
+        $output .= "<tr>" .
+        "<td align='center'>" . $row["course_name"] . "</td>" .
+        "<td align='center'>" . $row["course_description"]. "</td>" .
+        "<td align='center'>" . $row["department_name"].  "</td>" .
+        "<td align='center'>" . $row["professor_name"].  "</td>" .
+        "</tr>";
+        $count++;    
+    }
+    if ($count == 0) {
+        $output = "<tr><td colspan='4' align='center' class='no-records'>No Courses Found</td></tr>";
     }
 
+
     echo json_encode($return_arr);
+    // echo $output;
 }
 mysqli_close($conn);
 ?>

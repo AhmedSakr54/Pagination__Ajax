@@ -42,3 +42,10 @@ button:hover {
     font-weight: bolder;
     background-color: #fff8cd;
 }
+.navigation:disabled:hover {
+    cursor: not-allowed;
+}
+.no-records {
+    font-weight: bolder;
+    color: red;
+}

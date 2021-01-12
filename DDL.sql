@@ -29,6 +29,7 @@ INSERT INTO department (department_name) VALUES ("CCE");
 INSERT INTO department (department_name) VALUES ("EME");
 INSERT INTO department (department_name) VALUES ("OCE");
 
+
 INSERT INTO professor (professor_name) VALUES ("prof1");
 INSERT INTO professor (professor_name) VALUES ("prof2");
 INSERT INTO professor (professor_name) VALUES ("prof3");
@@ -55,3 +56,12 @@ INSERT INTO course (course_name, course_description, department_id, professor_id
 INSERT INTO course (course_name, course_description, department_id, professor_id) VALUES ("Computer Architecutre", "learn hardware even more", 1, 1);
 INSERT INTO course (course_name, course_description, department_id, professor_id) VALUES ("Digital Logic 1", "learn combinational circuits", 1, 8);
 INSERT INTO course (course_name, course_description, department_id, professor_id) VALUES ("Digital Logic 2", "learn sequential circuits", 1, 8);
+
+INSERT INTO professor (professor_name) VALUES ("prof9");
+INSERT INTO department (department_name) VALUES ("CAE");
+INSERT INTO course (course_name, course_description, department_id, professor_id) VALUES ("Strength of Materials", "about materials mechanics subject", 2, 7);
+INSERT INTO course (course_name, course_description, department_id, professor_id) VALUES ("Design of Machinery", "a course about machinery", 2, 7);
+INSERT INTO course (course_name, course_description, department_id, professor_id) VALUES ("Logic Design for Microprocessors", "learn logic desgin for microprocessors", 2, 6);
+INSERT INTO course (course_name, course_description, department_id, professor_id) VALUES ("Structural Analysis 1", "Analysis of structures", 4, 9);
+INSERT INTO course (course_name, course_description, department_id, professor_id) VALUES ("Structural Analysis 2", "Analysis of structures again but more difficult", 4, 9);
+
